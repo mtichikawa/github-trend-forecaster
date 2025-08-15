@@ -16,3 +16,5 @@ plotly==5.18.0
 # Utilities
 python-dotenv==1.0.0
 jupyter==1.0.0
+
+# Updated: 2025-08-15
