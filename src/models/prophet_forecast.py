@@ -9,15 +9,8 @@ import numpy as np
 from pathlib import Path
 from datetime import datetime
 
-try:
-    from prophet import Prophet
-    import matplotlib.pyplot as plt
-except ImportError:
-    print("Installing Prophet...")
-    import subprocess
-    subprocess.run(['pip', 'install', 'prophet', 'matplotlib'])
-    from prophet import Prophet
-    import matplotlib.pyplot as plt
+from prophet import Prophet
+import matplotlib.pyplot as plt
 
 
 class RepoForecaster:

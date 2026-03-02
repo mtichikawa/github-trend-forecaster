@@ -27,12 +27,7 @@ Typical usage:
 from dataclasses import dataclass, field
 from typing import List, Optional
 
-try:
-    from prophet import Prophet
-except ImportError:
-    import subprocess
-    subprocess.run(["pip", "install", "prophet"])
-    from prophet import Prophet
+from prophet import Prophet
 
 
 # ── Hyperparameter config ──────────────────────────────────────────────────────

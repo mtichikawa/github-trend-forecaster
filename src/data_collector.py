@@ -9,15 +9,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import time
 
-try:
-    from github import Github, RateLimitExceededException
-    import pandas as pd
-except ImportError:
-    print("Installing required packages...")
-    import subprocess
-    subprocess.run(['pip', 'install', 'PyGithub', 'pandas'])
-    from github import Github
-    import pandas as pd
+from github import Github, RateLimitExceededException
+import pandas as pd
 
 
 class GitHubDataCollector:
