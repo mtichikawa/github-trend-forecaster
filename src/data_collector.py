@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import time
 
-from github import Github, RateLimitExceededException
+from github import Github, RateLimitExceededException  # RateLimitExceededException handled in collect_multiple()
 import pandas as pd
 
 
