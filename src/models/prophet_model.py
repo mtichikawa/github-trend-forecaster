@@ -224,3 +224,4 @@ if __name__ == "__main__":
     for name, cfg in CONFIGS.items():
         kwargs = cfg.to_prophet_kwargs()
         print(f"{name:12s}  {cfg}")
+# todo: add integration test coverage
