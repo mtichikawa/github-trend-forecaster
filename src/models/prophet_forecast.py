@@ -4,7 +4,10 @@ Predicts future repository growth
 '''
 
 import json
+import logging
 import pandas as pd
+
+log = logging.getLogger(__name__)
 import numpy as np
 from pathlib import Path
 from datetime import datetime
