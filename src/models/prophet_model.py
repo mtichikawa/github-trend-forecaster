@@ -186,6 +186,7 @@ def fit_with_config(forecaster, df, config: ProphetModelConfig) -> None:
 
 # ── Preset configs ─────────────────────────────────────────────────────────────
 
+# Preset guide: use 'conservative' for stable repos, 'flexible' for viral/fast-growing ones
 CONFIGS = {
     "default": ProphetModelConfig(),
 
