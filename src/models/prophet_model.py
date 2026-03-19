@@ -180,7 +180,7 @@ def fit_with_config(forecaster, df, config: ProphetModelConfig) -> None:
 
     log.info(f"Training Prophet model with config: {config}")
     model.fit(df)
-    forecaster.model = model
+    forecaster.model = model  # replaces .model in-place; predict() and evaluate() work normally after
     log.info("Model training complete.")
 
 
