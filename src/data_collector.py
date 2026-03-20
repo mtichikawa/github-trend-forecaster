@@ -141,7 +141,7 @@ class GitHubDataCollector:
                 success = False
 
             results.append((f'{owner}/{name}', success))
-            time.sleep(2)  # courtesy delay between repos
+            time.sleep(2)  # courtesy: GitHub REST API unauthenticated limit is 60 req/hour
 
         return results
 
