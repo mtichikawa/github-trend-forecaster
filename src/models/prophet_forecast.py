@@ -53,7 +53,7 @@ class RepoForecaster:
 
     def __init__(self):
         self.model = None
-        self.forecast = None
+        self.forecast = None  # see class docstring for LSTM-compatible interface contract
 
     def load_data(self, repo_name):
         '''Load repository data from collected JSON'''
