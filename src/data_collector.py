@@ -11,10 +11,11 @@ import time
 
 from github import Github, RateLimitExceededException  # RateLimitExceededException handled in collect_multiple()  # RateLimitExceededException handled in collect_multiple()
 import pandas as pd
+from typing import Any, Optional
 
 
 class GitHubDataCollector:
-    def __init__(self, token=None):
+    def __init__(self, token: Optional[Any] = None):
         '''Initialize with GitHub token (optional for higher rate limits)'''
         self.github = Github(token) if token else Github()
         self.data_dir = Path('data/raw')
