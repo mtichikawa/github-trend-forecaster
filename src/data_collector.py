@@ -3,15 +3,15 @@ GitHub Repository Data Collector
 Fetches historical star, fork, and issue data from GitHub API
 '''
 
-import os
-import json
 from datetime import datetime, timedelta
 from pathlib import Path
+import json
+import os
 import time
 
 from github import Github, RateLimitExceededException  # RateLimitExceededException handled in collect_multiple()  # RateLimitExceededException handled in collect_multiple()
-import pandas as pd
 from typing import Any, Optional
+import pandas as pd
 
 
 class GitHubDataCollector:
