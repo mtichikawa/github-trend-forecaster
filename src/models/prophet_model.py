@@ -25,7 +25,7 @@ Typical usage:
 """
 
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from prophet import Prophet
 
@@ -140,7 +140,7 @@ class ProphetModelConfig:
 
 # ── Fitting helper ─────────────────────────────────────────────────────────────
 
-def fit_with_config(forecaster, df, config: ProphetModelConfig) -> None:
+def fit_with_config(forecaster: Any, df, config: ProphetModelConfig) -> None:
     """
     Train a RepoForecaster using the given ProphetModelConfig.
 
@@ -225,4 +225,3 @@ if __name__ == "__main__":
     for name, cfg in CONFIGS.items():
         kwargs = cfg.to_prophet_kwargs()
         print(f"{name:12s}  {cfg}")
-# todo: add integration test coverage
