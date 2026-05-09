@@ -140,7 +140,7 @@ class ProphetModelConfig:
 
 # ── Fitting helper ─────────────────────────────────────────────────────────────
 
-def fit_with_config(forecaster: Any, df, config: ProphetModelConfig) -> None:
+def fit_with_config(forecaster: Any, df: Any, config: ProphetModelConfig) -> None:
     """
     Train a RepoForecaster using the given ProphetModelConfig.
 
