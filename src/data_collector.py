@@ -21,7 +21,7 @@ class GitHubDataCollector:
         self.data_dir = Path('data/raw')
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
-    def get_repo_stats(self, owner, name):
+    def get_repo_stats(self, owner: Any, name):
         '''Fetch current repository statistics'''
         try:
             repo = self.github.get_repo(f'{owner}/{name}')
