@@ -14,6 +14,7 @@ from datetime import datetime
 
 from prophet import Prophet
 import matplotlib.pyplot as plt
+from typing import Any
 
 
 class RepoForecaster:
@@ -55,7 +56,7 @@ class RepoForecaster:
         self.model = None
         self.forecast = None  # see class docstring for LSTM-compatible interface contract
 
-    def load_data(self, repo_name):
+    def load_data(self, repo_name: Any):
         '''Load repository data from collected JSON'''
         data_dir = Path('data/raw')
         
