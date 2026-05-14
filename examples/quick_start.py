@@ -5,9 +5,10 @@ Demonstrates basic usage of the forecaster
 
 from src.data_collector import GitHubDataCollector
 from src.models.prophet_forecast import RepoForecaster
+from typing import Any
 
 
-def quick_forecast(owner, name):
+def quick_forecast(owner: Any, name):
     '''Run complete forecast workflow'''
     
     print(f'🔮 Forecasting {owner}/{name}')
