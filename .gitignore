@@ -14,3 +14,4 @@ __pycache__/
 # Backup files
 *.bak
 *.orig
+venv/
