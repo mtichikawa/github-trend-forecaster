@@ -8,7 +8,7 @@ from src.models.prophet_forecast import RepoForecaster
 from typing import Any
 
 
-def quick_forecast(owner: Any, name):
+def quick_forecast(owner: Any, name: Any):
     '''Run complete forecast workflow'''
     
     print(f'🔮 Forecasting {owner}/{name}')
