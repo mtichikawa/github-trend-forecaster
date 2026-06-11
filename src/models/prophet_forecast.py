@@ -74,7 +74,7 @@ class RepoForecaster:
             
         return data
         
-    def prepare_data(self, data):
+    def prepare_data(self, data: Any):
         '''Convert to Prophet format (ds, y columns)'''
         star_history = data.get('star_history', [])
         
