@@ -44,7 +44,7 @@ class GitHubDataCollector:
             print(f'Error fetching {owner}/{name}: {e}')
             return None
             
-    def get_star_history(self, owner: Any, name, sample_size=1000):
+    def get_star_history(self, owner: Any, name: Any, sample_size=1000):
         '''
         Get star growth history (sampled for performance).
 
