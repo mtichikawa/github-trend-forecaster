@@ -108,7 +108,7 @@ class RepoForecaster:
         self.model.fit(df)
         print('✅ Model trained')
         
-    def predict(self, periods=90):
+    def predict(self, periods: int = 90):
         """
         Generate forecast for the given number of future days.
 
