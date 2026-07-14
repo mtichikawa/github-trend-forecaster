@@ -87,7 +87,7 @@ class RepoForecaster:
         
         return df[['ds', 'y']]
         
-    def train(self, df):
+    def train(self, df: Any):
         """
         Train Prophet model with default hyperparameters.
 
