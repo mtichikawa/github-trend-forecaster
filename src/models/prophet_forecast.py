@@ -127,7 +127,7 @@ class RepoForecaster:
         
         return self.forecast
         
-    def evaluate(self, test_df):
+    def evaluate(self, test_df: Any):
         """
         Calculate forecast accuracy against held-out actuals.
 
