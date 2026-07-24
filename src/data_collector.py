@@ -85,7 +85,7 @@ class GitHubDataCollector:
             print(f'Error getting star history for {owner}/{name}: {e}')
             return {'history': [], 'truncated': False, 'sampled': 0}
             
-    def save_data(self, owner, name):
+    def save_data(self, owner: Any, name):
         '''Collect and save all data for a repository'''
         print(f'Collecting data for {owner}/{name}...')
 
