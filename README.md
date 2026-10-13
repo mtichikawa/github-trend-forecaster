@@ -23,7 +23,7 @@ python src/data_collector.py
 python src/models/prophet_forecast.py pytorch/pytorch
 ```
 
-Run both from the project root. If the star-history request fails, the collector still writes a file with an empty history and the forecast step stops with "No star history in data".
+Run both from the project root. If the star-history request fails, the collector writes no file for that repository: `save_data` raises a `RuntimeError` naming the repository and the cause, and the collector script reports it and exits non-zero.
 
 The CSVs already in `data/raw/` are generated demo data (built in `notebooks/trend_forecaster_analysis.ipynb`), not real star counts. The forecaster reads the collector's JSON files, not these CSVs.
 

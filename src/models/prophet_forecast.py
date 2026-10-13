@@ -24,9 +24,9 @@ class RepoForecaster:
     Loads collected GitHub star history from data/raw/, trains a Prophet
     model, and generates multi-day forecasts with uncertainty intervals.
 
-    Interface contract — the LSTM comparison model (src/models/lstm_model.py,
-    to be built in U1 W2) must expose the same public methods so that notebooks
-    and scripts can swap models without code changes:
+    Interface contract — any alternative model (none is built; an LSTM
+    comparison was considered and not pursued) should expose the same public
+    methods so that notebooks and scripts can swap models without code changes:
 
         load_data(repo_name: str) -> dict
             Load raw data dict from data/raw/.
@@ -132,7 +132,7 @@ class RepoForecaster:
         Calculate forecast accuracy against held-out actuals.
 
         Joins test_df['ds'] with self.forecast['yhat'] on date and computes
-        MAE, RMSE, and R². The LSTM model must return the same keys.
+        MAE, RMSE, and R². An alternative model should return the same keys.
 
         Args:
             test_df: DataFrame with columns 'ds' and 'y' (actual values).

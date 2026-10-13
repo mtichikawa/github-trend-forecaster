@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import json
 import os
+import sys
 import time
 
 from github import Github, RateLimitExceededException  # RateLimitExceededException handled in collect_multiple()  # RateLimitExceededException handled in collect_multiple()
@@ -16,7 +17,7 @@ import pandas as pd
 
 class GitHubDataCollector:
     def __init__(self, token: Optional[Any] = None):
-        '''Initialize with GitHub token (optional for higher rate limits)'''
+        '''Initialize with a GitHub token (star history returns 401 without one)'''
         self.github = Github(token) if token else Github()
         self.data_dir = Path('data/raw')
         self.data_dir.mkdir(parents=True, exist_ok=True)
@@ -47,6 +48,9 @@ class GitHubDataCollector:
     def get_star_history(self, owner: Any, name: Any, sample_size: int = 1000):
         '''
         Get star growth history (sampled for performance).
+
+        Raises RuntimeError if the request fails (for example, a 401 without
+        GITHUB_TOKEN), so no file is written with an empty history.
 
         Returns a dict with keys:
             history   - list of {date, cumulative_stars} records
@@ -82,8 +86,7 @@ class GitHubDataCollector:
             return self.get_star_history(owner, name, sample_size)
 
         except Exception as e:
-            print(f'Error getting star history for {owner}/{name}: {e}')
-            return {'history': [], 'truncated': False, 'sampled': 0}
+            raise RuntimeError(f'Could not fetch star history for {owner}/{name}: {e}') from e
             
     def save_data(self, owner: Any, name):
         '''Collect and save all data for a repository'''
@@ -170,6 +173,9 @@ def main():
     for repo, success in results:
         status = '✅' if success else '❌'
         print(f'  {status} {repo}')
+
+    if not all(success for _, success in results):
+        sys.exit(1)
 
 
 if __name__ == '__main__':
