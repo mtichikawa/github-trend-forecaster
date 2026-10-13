@@ -7,8 +7,7 @@ Predict future growth of GitHub repositories using time series forecasting.
 - Automatic data collection from GitHub API
 - Facebook Prophet forecasting model
 - Trend and seasonality analysis
-- Interactive visualizations
-- "Rising star" detection
+- Forecast and trend/seasonality plots (matplotlib)
 
 ## Quick Start
 
@@ -16,18 +15,28 @@ Predict future growth of GitHub repositories using time series forecasting.
 # Install dependencies
 pip install -r requirements.txt
 
-# Run example
-python examples/quick_start.py
+# Collect star history for tensorflow, pytorch and scikit-learn to data/raw/
+export GITHUB_TOKEN=...   # required: without a token GitHub returns 401 for star history
+python src/data_collector.py
+
+# Forecast one of them
+python src/models/prophet_forecast.py pytorch/pytorch
 ```
+
+Run both from the project root. If the star-history request fails, the collector still writes a file with an empty history and the forecast step stops with "No star history in data".
+
+The CSVs already in `data/raw/` are generated demo data (built in `notebooks/trend_forecaster_analysis.ipynb`), not real star counts. The forecaster reads the collector's JSON files, not these CSVs.
 
 ## Usage
 
 ```python
+import os
+
 from src.data_collector import GitHubDataCollector
 from src.models.prophet_forecast import RepoForecaster
 
 # Collect data
-collector = GitHubDataCollector()
+collector = GitHubDataCollector(os.getenv('GITHUB_TOKEN'))
 collector.save_data('pytorch', 'pytorch')
 
 # Forecast
@@ -48,9 +57,9 @@ forecaster.plot_forecast('pytorch/pytorch')
 - Handling sparse time series data
 - Visualization of predictions with uncertainty
 
-## Roadmap
+## LSTM Comparison
 
-- **LSTM comparison model** (in progress) — PyTorch LSTM trained on the same star history data, benchmarked against Prophet on MAE/RMSE. Goal: show where deep learning helps and where classical methods are sufficient.
+Not built. `notebooks/lstm_comparison_motivation.ipynb` looks at Prophet's residuals to see whether an LSTM would have room to improve. There is no LSTM model in the code.
 
 ## Contact
 
